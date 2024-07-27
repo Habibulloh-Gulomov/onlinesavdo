@@ -1,17 +1,16 @@
-import { useContext, useReducer } from "react";
+import { useContext } from "react";
 import ItemCard from "../itemCard/ItemCard";
 import { MyContext } from "../context/context";
 import "./ItemList.css";
 
 const ItemList = (props: any) => {
-	const context = useContext(MyContext)
-	const value = context?.value?.data ? context?.value.data : context?.value
+	const context = useContext(MyContext);
+	const value = context?.value?.data ? context?.value.data : context?.value;
 	let dataIn =
 		props.data != undefined && value != undefined
 			? value.filter((e: any) => e.category === props.data)
-			: value ;
-			console.log(value);
-			
+			: value;
+
 	if (!dataIn) {
 		return <div className="loader"></div>;
 	}
