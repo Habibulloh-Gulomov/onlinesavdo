@@ -1,11 +1,9 @@
-import React from 'react'
-import ItemList from '../ItemList/ItemList'
+import React from "react";
+import ItemList from "../ItemList/ItemList";
 
 const WomensWear = () => {
-  const data = "women's clothing"
-  return (
-    <ItemList data={data}/>
-  )
-}
+	const data = "women's clothing";
+	return <ItemList data={data} />;
+};
 
-export default WomensWear
+export default WomensWear;

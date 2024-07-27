@@ -1,10 +1,8 @@
-import ItemList from '../ItemList/ItemList'
+import ItemList from "../ItemList/ItemList";
 
 const Jewelary = () => {
-  const data = "jewelery"
-  return (
-    <ItemList data={data}/>
-  )
-}
+	const data = "jewelery";
+	return <ItemList data={data} />;
+};
 
-export default Jewelary
+export default Jewelary;

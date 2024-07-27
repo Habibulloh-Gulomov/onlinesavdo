@@ -1,5 +1,5 @@
 import React, { useState, ReactNode } from "react";
-import MyContext from "./context";
+import {MyContext} from "./context";
 
 interface MyProviderProps {
 	children: ReactNode;

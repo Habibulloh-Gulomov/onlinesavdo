@@ -1,25 +1,25 @@
-import {useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "./ItemFilter.css";
 
-const ItemFilter = () => {
+const ItemFilter = ({ rate, setRate }: any) => {
 	const [num, setNum] = useState(0);
-	const descrease = (e: { preventDefault: () => void; }) => {
+	let startCost: any = useRef();
+	let endCost: any = useRef();
+
+	const descrease = (e: { preventDefault: () => void }) => {
 		e.preventDefault();
 		if (num > 0) {
 			setNum(num - 0.5);
 		}
 	};
 
-	const increase = (e: { preventDefault: () => void; }) => {
+	const increase = (e: { preventDefault: () => void }) => {
 		e.preventDefault();
 
 		if (num < 5) {
 			setNum(num + 0.5);
 		}
 	};
-
-	const startCost = useRef();
-	const endCost = useRef();
 
 	const [modal, setModal] = useState(false);
 	const filterFunc = () => {
@@ -33,12 +33,17 @@ const ItemFilter = () => {
 
 	const filterHandle = (e: any) => {
 		e.preventDefault();
+		setRate({
+			num: num,
+			start: startCost.current.value,
+			end: endCost.current.value,
+		});
 		setModal(!modal);
 	};
 	return (
 		<div className="container">
 			<button
-      onClick={filterFunc}
+				onClick={filterFunc}
 				className="filter-btn">
 				Filter
 			</button>
@@ -57,7 +62,7 @@ const ItemFilter = () => {
 									className="rate-btn">
 									+
 								</button>
-								<span className="rate-num">num</span>
+								<span className="rate-num">{num}</span>
 								<button
 									type="button"
 									onClick={descrease}
@@ -70,7 +75,7 @@ const ItemFilter = () => {
 								<input
 									className="price-input"
 									type="number"
-									// ref={startCost}
+									ref={startCost}
 									placeholder="from"
 									defaultValue={0}
 								/>
@@ -78,14 +83,14 @@ const ItemFilter = () => {
 								<input
 									className="price-input"
 									type="number"
-									// ref={endCost}
+									ref={endCost}
 									placeholder="to"
 									defaultValue={1000}
 								/>
 							</div>
 							<button
 								className="rate-submit"
-                onClick={filterHandle}>
+								onClick={filterHandle}>
 								Sort
 							</button>
 						</form>
