@@ -6,10 +6,11 @@ const SearchItem = () => {
 	let search: any = useRef();
 	const context = useContext(MyContext);
 	const [data, setData] = useState(context);
+	const trueValue = context?.value?.data ? context?.value.data : context?.value;
 	let filteredData;
 	const Search = (evt: any) => {
 		evt.preventDefault();
-		filteredData = context?.value.data.filter(
+		filteredData = trueValue.filter(
 			(e: { title: string }) => e.title === search.current.value
 		);
 		setData(filteredData);
